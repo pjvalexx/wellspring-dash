@@ -61,7 +61,28 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				oil: {
+					primary: 'hsl(var(--oil-primary))',
+					secondary: 'hsl(var(--oil-secondary))'
+				},
+				gas: {
+					primary: 'hsl(var(--gas-primary))'
+				},
+				injection: {
+					primary: 'hsl(var(--injection-primary))'
+				},
+				danger: 'hsl(var(--danger))',
+				warning: 'hsl(var(--warning))',
+				success: 'hsl(var(--success))'
+			},
+			backgroundImage: {
+				'gradient-oil': 'var(--gradient-oil)',
+				'gradient-primary': 'var(--gradient-primary)'
+			},
+			boxShadow: {
+				'card': 'var(--shadow-card)',
+				'elevated': 'var(--shadow-elevated)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
