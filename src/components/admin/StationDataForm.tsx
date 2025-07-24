@@ -8,10 +8,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { DatePicker } from "@/components/ui/date-picker";
 import { useToast } from "@/hooks/use-toast";
 
-const fieldSchema = z.object({
+const stationSchema = z.object({
   date: z.date({ required_error: "La fecha es requerida" }),
-  field: z.string().min(1, "Seleccione un campo"),
-  area: z.string().min(1, "El área es requerida"),
+  station: z.string().min(1, "Seleccione una estación"),
+  field: z.string().min(1, "El campo es requerido"),
   crudeProduction: z.number().min(0, "Debe ser un valor positivo"),
   mechanicalPumping: z.number().min(0, "Debe ser un valor positivo"),
   electricPumping: z.number().min(0, "Debe ser un valor positivo"),
@@ -19,23 +19,23 @@ const fieldSchema = z.object({
   injection: z.number().min(0, "Debe ser un valor positivo"),
 });
 
-type FieldFormData = z.infer<typeof fieldSchema>;
+type StationFormData = z.infer<typeof stationSchema>;
 
-const fields = [
-  "Campo Norte",
-  "Campo Sur", 
-  "Campo Este",
-  "Campo Oeste",
-  "Campo Central"
+const stations = [
+  "Estación Norte",
+  "Estación Sur", 
+  "Estación Este",
+  "Estación Oeste",
+  "Estación Central"
 ];
 
-export const FieldDataForm = () => {
+export const StationDataForm = () => {
   const { toast } = useToast();
   
-  const form = useForm<FieldFormData>({
-    resolver: zodResolver(fieldSchema),
+  const form = useForm<StationFormData>({
+    resolver: zodResolver(stationSchema),
     defaultValues: {
-      area: "",
+      field: "",
       crudeProduction: 0,
       mechanicalPumping: 0,
       electricPumping: 0,
@@ -44,11 +44,11 @@ export const FieldDataForm = () => {
     },
   });
 
-  const onSubmit = (data: FieldFormData) => {
-    console.log("Datos de campo:", data);
+  const onSubmit = (data: StationFormData) => {
+    console.log("Datos de estación:", data);
     toast({
       title: "Datos guardados",
-      description: "Los datos del campo han sido registrados exitosamente",
+      description: "Los datos de la estación han sido registrados exitosamente",
     });
     form.reset();
   };
@@ -77,20 +77,20 @@ export const FieldDataForm = () => {
 
           <FormField
             control={form.control}
-            name="field"
+            name="station"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Campo</FormLabel>
+                <FormLabel>Estación</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Seleccionar campo" />
+                      <SelectValue placeholder="Seleccionar estación" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {fields.map((fieldOption) => (
-                      <SelectItem key={fieldOption} value={fieldOption}>
-                        {fieldOption}
+                    {stations.map((station) => (
+                      <SelectItem key={station} value={station}>
+                        {station}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -102,12 +102,12 @@ export const FieldDataForm = () => {
 
           <FormField
             control={form.control}
-            name="area"
+            name="field"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Área</FormLabel>
+                <FormLabel>Campo</FormLabel>
                 <FormControl>
-                  <Input placeholder="Nombre del área" {...field} />
+                  <Input placeholder="Nombre del campo" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -218,7 +218,7 @@ export const FieldDataForm = () => {
         </div>
 
         <Button type="submit" className="w-full">
-          Guardar Datos de Campo
+          Guardar Datos de Estación
         </Button>
       </form>
     </Form>

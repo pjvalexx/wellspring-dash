@@ -8,7 +8,7 @@ import { CalendarIcon, BarChart3, TrendingUp, Layers, Droplets } from "lucide-re
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import ProductionOverview from "./ProductionOverview";
-import ProductionByField from "./ProductionByField";
+import ProductionByStation from "./ProductionByStation";
 import ProductionHistory from "./ProductionHistory";
 import WellsByCategory from "./WellsByCategory";
 
@@ -57,9 +57,9 @@ export default function Dashboard() {
               <BarChart3 className="h-4 w-4" />
               Visión General
             </TabsTrigger>
-            <TabsTrigger value="fields" className="flex items-center gap-2">
+            <TabsTrigger value="stations" className="flex items-center gap-2">
               <Droplets className="h-4 w-4" />
-              Por Campo
+              Por Estación
             </TabsTrigger>
             <TabsTrigger value="history" className="flex items-center gap-2">
               <TrendingUp className="h-4 w-4" />
@@ -75,8 +75,8 @@ export default function Dashboard() {
             <ProductionOverview selectedDate={selectedDate.toISOString()} />
           </TabsContent>
 
-          <TabsContent value="fields" className="space-y-6">
-            <ProductionByField selectedDate={selectedDate.toISOString()} />
+          <TabsContent value="stations" className="space-y-6">
+            <ProductionByStation selectedDate={selectedDate.toISOString()} />
           </TabsContent>
 
           <TabsContent value="history" className="space-y-6">
