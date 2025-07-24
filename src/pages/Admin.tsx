@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ProductionDataForm } from "@/components/admin/ProductionDataForm";
-import { StationDataForm } from "@/components/admin/StationDataForm";
+import { FieldDataForm } from "@/components/admin/FieldDataForm";
 import { WellStatusForm } from "@/components/admin/WellStatusForm";
 import { HistoricalDataForm } from "@/components/admin/HistoricalDataForm";
 
@@ -38,7 +38,7 @@ const Admin = () => {
         <Tabs defaultValue="production" className="w-full">
           <TabsList className="grid w-full grid-cols-4 mb-8">
             <TabsTrigger value="production">Producción Diaria</TabsTrigger>
-            <TabsTrigger value="stations">Datos por Estación</TabsTrigger>
+            <TabsTrigger value="fields">Datos por Campo</TabsTrigger>
             <TabsTrigger value="wells">Estado de Pozos</TabsTrigger>
             <TabsTrigger value="historical">Datos Históricos</TabsTrigger>
           </TabsList>
@@ -54,13 +54,13 @@ const Admin = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="stations">
+          <TabsContent value="fields">
             <Card>
               <CardHeader>
-                <CardTitle>Datos por Estación/Campo</CardTitle>
+                <CardTitle>Datos por Campo/Área</CardTitle>
               </CardHeader>
               <CardContent>
-                <StationDataForm />
+                <FieldDataForm />
               </CardContent>
             </Card>
           </TabsContent>
